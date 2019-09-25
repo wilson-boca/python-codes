@@ -32,9 +32,6 @@ except Exception as ex:
 print("--- xlsx2csv->%s seconds ---" % (time.time() - start_time))
 
 start_time = time.time()
-print("--- %s seconds ---" % (time.time() - start_time))
-
-start_time = time.time()
 data = pd.read_csv("/home/rodrigo/Downloads/converted.csv", usecols=['CATEGORIA'], low_memory=False)
 print("--- pandas import a csv file->%s seconds ---" % (time.time() - start_time))
 
@@ -43,7 +40,7 @@ data.drop_duplicates(subset="CATEGORIA", keep='first', inplace=True)
 print("--- pandas drop duplicate->%s seconds ---" % (time.time() - start_time))
 
 start_time = time.time()
-data.sort_values("Empresa", inplace=True)
+data.sort_values("CATEGORIA", inplace=True)
 print("--- pandas sort->%s seconds ---" % (time.time() - start_time))
 
 for value in data.values:
